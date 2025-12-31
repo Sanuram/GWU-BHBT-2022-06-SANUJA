@@ -416,10 +416,36 @@ footer {
     margin-top: 4rem;
 }
 
+footer p {
+    margin: 0.5rem 0;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--text-light);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+    }
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--nav-bg);
+        padding: 1rem 0;
+        text-align: center;
+        box-shadow: var(--shadow);
     }
     .hamburger {
         display: block;
