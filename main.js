@@ -1,10 +1,27 @@
 const { useState, useEffect } = React;
 const { motion, AnimatePresence, useAnimation, useMotionValue, useTransform } = window.Motion;
 
+const LoadingSpinner = () => (
+    <motion.div 
+        className="loading-screen"
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+    >
+        <div className="spinner"></div>
+    </motion.div>
+);
+
 const App = () => {
+    const [loading, setLoading] = useState(true);
     const [darkMode, setDarkMode] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('Home');
+
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const toggleTheme = () => {
         setDarkMode(!darkMode);
@@ -31,6 +48,9 @@ const App = () => {
     };
 
     const handleNavClick = (name) => {
+        const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3');
+        audio.volume = 0.5;
+        audio.play().catch(() => {});
         setActiveSection(name);
         setMobileMenuOpen(false);
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -41,51 +61,59 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <header>
-                <nav>
-                    <div className="logo">My Portfolio</div>
-                    <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-                        {navLinks.map((link) => (
-                            <li key={link.name}>
-                                <a href="#" className="nav-item" onClick={(e) => { e.preventDefault(); handleNavClick(link.name); }}>
-                                    {link.name}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                    <button id="theme-toggle" onClick={toggleTheme} aria-label="Toggle Dark Mode">
-                        {darkMode ? '☀️' : '🌙'}
-                    </button>
-                    <div className="hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                        <i className="fas fa-bars"></i>
-                    </div>
-                </nav>
-            </header>
+            <AnimatePresence>
+                {loading && <LoadingSpinner key="loader" />}
+            </AnimatePresence>
 
-            <main style={{ minHeight: '80vh', position: 'relative' }}>
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activeSection}
-                        initial={activeVariant.initial}
-                        animate={activeVariant.animate}
-                        exit={activeVariant.exit}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                        <ActiveComponent />
-                    </motion.div>
-                </AnimatePresence>
-            </main>
+            {!loading && (
+                <React.Fragment>
+                    <header>
+                        <nav>
+                            <div className="logo">My Portfolio</div>
+                            <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+                                {navLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <a href="#" className="nav-item" onClick={(e) => { e.preventDefault(); handleNavClick(link.name); }}>
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                            <button id="theme-toggle" onClick={toggleTheme} aria-label="Toggle Dark Mode">
+                                {darkMode ? '☀️' : '🌙'}
+                            </button>
+                            <div className="hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                                <i className="fas fa-bars"></i>
+                            </div>
+                        </nav>
+                    </header>
 
-            <footer>
-                <p>&copy; 2025 Sanuja Ramachandran</p>
-                <p>Location: Batticaloa, Srilanka</p>
-                <p>Contact no: +94768568550</p>
-                <div className="social-links">
-                    <a href="mailto:ramsanujah@email.com" aria-label="Email"><i className="fas fa-envelope"></i></a>
-                    <a href="https://github.com/" target="_blank" aria-label="GitHub"><i className="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>
-                </div>
-            </footer>
+                    <main style={{ minHeight: '80vh', position: 'relative' }}>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeSection}
+                                initial={activeVariant.initial}
+                                animate={activeVariant.animate}
+                                exit={activeVariant.exit}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                            >
+                                <ActiveComponent />
+                            </motion.div>
+                        </AnimatePresence>
+                    </main>
+
+                    <footer>
+                        <p>&copy; 2025 Sanuja Ramachandran</p>
+                        <p>Location: Batticaloa, Srilanka</p>
+                        <p>Contact no: +94768568550</p>
+                        <div className="social-links">
+                            <a href="mailto:ramsanujah@email.com" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                            <a href="https://github.com/" target="_blank" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>
+                        </div>
+                    </footer>
+                </React.Fragment>
+            )}
         </React.Fragment>
     );
 };
@@ -218,10 +246,25 @@ const HeroSection = () => {
                 src="c:\\Users\\ramsa\\OneDrive\\Pictures\\WhatsApp Image2 2025-05-20 at 22.43.19_13779ce1.jpg" 
                 alt="Sanuja Ramachandran" 
                 className="profile-img"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                whileHover={{ scale: 1.05, borderColor: "var(--secondary-color)" }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ 
+                    scale: 1, 
+                    opacity: 1,
+                    y: [0, -15, 0],
+                    boxShadow: ["0 10px 30px rgba(0,0,0,0.1)", "0 20px 40px rgba(69, 123, 157, 0.4)", "0 10px 30px rgba(0,0,0,0.1)"]
+                }}
+                transition={{ 
+                    scale: { type: "spring", stiffness: 260, damping: 20 },
+                    opacity: { duration: 0.5 },
+                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                    boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                }}
+                whileHover={{ 
+                    scale: 1.1, 
+                    rotate: 5,
+                    borderColor: "var(--secondary-color)",
+                    boxShadow: "0 0 30px rgba(69, 123, 157, 0.8)"
+                }}
             />
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
