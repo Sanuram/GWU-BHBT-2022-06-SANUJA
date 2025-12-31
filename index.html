@@ -9,245 +9,361 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- React & Framer Motion CDNs -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
 </head>
 <body>
+    <div id="root"></div>
 
-    <header>
-        <nav>
-            <div class="logo">My Portfolio</div>
-            <ul class="nav-links">
-                <li><a href="#about" class="nav-item">Home</a></li>
-                <li><a href="#skills" class="nav-item">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#articles">Articles</a></li>
-                <li><a href="#cta">Hire Me</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
-            <div class="hamburger"><i class="fas fa-bars"></i></div>
-        </nav>
-    </header>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { motion, AnimatePresence } = window.Motion;
 
-    <main>
-        <section id="about" class="page active">
-            <div class="background-3d">
-                <div class="shape"></div>
-                <div class="shape"></div>
-                <div class="shape"></div>
-                <div class="shape"></div>
-                <div class="shape"></div>
-                <div class="shape"></div>
-            </div>
-            <img src="c:\Users\ramsa\OneDrive\Pictures\WhatsApp Image2 2025-05-20 at 22.43.19_13779ce1.jpg" alt="Sanuja Ramachandran" class="profile-img">
-            <h1>Sanuja Ramachandran</h1>
-            <h2><span class="typing-text" data-text="Biomedical Technology Student">Biomedical Technology Student</span></h2>
-            <p>
-                This website will be used to showcase my projects, skills, and achievements
-                in the field of Biomedical Technology and Healthcare Innovation.
-            </p>
-            <p>
-                I am a passionate Biomedical Technology student with a keen interest in medical devices, bio-instrumentation, and healthcare IT. Currently, I am honing my skills in circuit design, biomaterials, and clinical engineering. My goal is to develop technologies that improve patient care and solve complex medical challenges.
-            </p>
-            <a href="c:\Users\ramsa\Downloads\Sanuja-Ramachandran-FlowCV-Resume-20250520 (3).pdf" class="btn" download style="margin-top: 2rem;">Download CV</a>
-            <div class="hero-icons">
-                <i class="fas fa-heartbeat"></i>
-                <i class="fas fa-microscope"></i>
-                <i class="fas fa-dna"></i>
-            </div>
-        </section>
+        const App = () => {
+            const [darkMode, setDarkMode] = useState(false);
+            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-        <section id="skills" class="page">
-            <h3>Technical Skills</h3>
-            <div class="skills-container">
-                <div class="skill-bar">
-                    <div class="info">
-                        <p>Medical Instrumentation</p>
-                        <p>90%</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 90%"></span>
-                    </div>
-                </div>
-                <div class="skill-bar">
-                    <div class="info">
-                        <p>Biomaterials</p>
-                        <p>85%</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 85%"></span>
-                    </div>
-                </div>
-                <div class="skill-bar">
-                    <div class="info">
-                        <p>Clinical Engineering</p>
-                        <p>80%</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 80%"></span>
-                    </div>
-                </div>
-            </div>
-            <h3>Soft Skills</h3>
-            <div class="skills-container">
-                <div class="skill-bar">
-                    <div class="info">
-                        <p><i class="fas fa-users"></i> Teamwork</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 95%"></span>
-                    </div>
-                </div>
-                <div class="skill-bar">
-                    <div class="info">
-                        <p><i class="fas fa-lightbulb"></i> Problem Solving</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 90%"></span>
-                    </div>
-                </div>
-                <div class="skill-bar">
-                    <div class="info">
-                        <p><i class="fas fa-comments"></i> Communication</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 95%"></span>
-                    </div>
-                </div>
-                <div class="skill-bar">
-                    <div class="info">
-                        <p><i class="fas fa-clock"></i> Time Management</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 85%"></span>
-                    </div>
-                </div>
-                <div class="skill-bar">
-                    <div class="info">
-                        <p><i class="fas fa-project-diagram"></i> Project Management</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 80%"></span>
-                    </div>
-                </div>
-                <div class="skill-bar">
-                    <div class="info">
-                        <p><i class="fas fa-brain"></i> Critical Thinking</p>
-                    </div>
-                    <div class="bar">
-                        <span style="width: 90%"></span>
-                    </div>
-                </div>
-            </div>
-            <h3>Tools & Software</h3>
-            <ul class="skills-list">
-                <li><i class="fas fa-drafting-compass"></i> AutoCAD 2D</li>
-                <li><i class="fas fa-cube"></i> Solidworks</li>
-                <li><i class="fas fa-code"></i> VS Code</li>
-                <li><i class="fab fa-github"></i> GitHub</li>
-                <li><i class="fab fa-microsoft"></i> Microsoft Office</li>
-                <li><i class="fas fa-palette"></i> Adobe Photoshop</li>
-                <li><i class="fas fa-calculator"></i> MATLAB</li>
-            </ul>
-        </section>
+            const toggleTheme = () => {
+                setDarkMode(!darkMode);
+                document.body.classList.toggle('dark-mode');
+            };
 
-        <section id="projects" class="page">
-            <h3>Projects & Coding Portfolio</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Arduino Vital Sign Monitor" class="project-img">
-                    <h4>Arduino Vital Sign Monitor</h4>
-                    <p>Designed a portable patient monitoring system using Arduino to track heart rate and body temperature in real-time.</p>
-                    <span class="github-link"><i class="fab fa-github"></i> View Code</span>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="MRI Tumor Detection" class="project-img">
-                    <h4>MRI Tumor Detection</h4>
-                    <p>Developed a MATLAB algorithm using image segmentation and edge detection to identify brain tumors in MRI scans.</p>
-                    <span class="github-link"><i class="fas fa-laptop-code"></i> View Project</span>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="3D Prosthetic Arm Design" class="project-img">
-                    <h4>3D Prosthetic Arm Design</h4>
-                    <p>Created a fully articulated prosthetic arm model in SolidWorks, optimized for additive manufacturing.</p>
-                    <span class="github-link"><i class="fas fa-cube"></i> View Design</span>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="3D Dental Implant Design" class="project-img">
-                    <h4>3D Dental Implant Design</h4>
-                    <p>Modeled a custom dental implant using CAD software, focusing on osseointegration surface textures and stress analysis.</p>
-                    <span class="github-link"><i class="fas fa-tooth"></i> View Model</span>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hospital Management System" class="project-img">
-                    <h4>Hospital Management System</h4>
-                    <p>Built a web-based application using PHP and MySQL to manage patient records and appointment scheduling.</p>
-                    <span class="github-link"><i class="fas fa-database"></i> View System</span>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Personal Portfolio Website" class="project-img">
-                    <h4>Personal Portfolio Website</h4>
-                    <p>Designed and developed a responsive personal portfolio website to showcase biomedical projects and skills using HTML, CSS, and JavaScript.</p>
-                    <span class="github-link"><i class="fas fa-globe"></i> View Website</span>
-                </div>
-            </div>
-        </section>
+            const navLinks = [
+                { name: 'Home', href: '#about' },
+                { name: 'Experience', href: '#experience' },
+                { name: 'Skills', href: '#skills' },
+                { name: 'Projects', href: '#projects' },
+                { name: 'Articles', href: '#articles' },
+                { name: 'Hire Me', href: '#cta' },
+                { name: 'Contact', href: '#contact' },
+            ];
 
-        <section id="articles" class="page">
-            <h3>Featured Articles</h3>
-            <div class="project-card">
-                <h4>Innovations in Prosthetics</h4>
-                <p>Exploring the latest advancements in bionic limbs and neural interfaces.</p>
-                <span class="github-link">Read Article</span>
-            </div>
-            <div class="project-card">
-                <h4>AI in Medical Imaging</h4>
-                <p>How machine learning is revolutionizing diagnostic accuracy in radiology.</p>
-                <span class="github-link">Read Article</span>
-            </div>
-        </section>
+            return (
+                <React.Fragment>
+                    <header>
+                        <nav>
+                            <div className="logo">My Portfolio</div>
+                            <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+                                {navLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <a href={link.href} className="nav-item" onClick={() => setMobileMenuOpen(false)}>
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                            <button id="theme-toggle" onClick={toggleTheme} aria-label="Toggle Dark Mode">
+                                {darkMode ? '☀️' : '🌙'}
+                            </button>
+                            <div className="hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                                <i className="fas fa-bars"></i>
+                            </div>
+                        </nav>
+                    </header>
 
-        <section id="cta" class="page">
-            <h2>Ready to collaborate?</h2>
-            <p>I am available for internships, research projects, and new opportunities.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn">Hire Me</a>
-                <a href="c:\Users\ramsa\Downloads\Sanuja-Ramachandran-FlowCV-Resume-20250520 (3).pdf" class="btn" download>Download Resume</a>
-            </div>
-        </section>
+                    <main>
+                        <HeroSection />
+                        <ExperienceSection />
+                        <SkillsSection />
+                        <ProjectsSection />
+                        <ArticlesSection />
+                        <CTASection />
+                        <ContactSection />
+                    </main>
 
-        <section id="contact" class="page">
-            <h3>Contact</h3>
-            <p>Email: <a href="ramsanujah@email.com">ramsanujah@email.com</a></p>
-            <div class="social-links">
-                <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <footer>
+                        <p>&copy; 2025 Sanuja Ramachandran</p>
+                        <p>Location: Batticaloa, Srilanka</p>
+                        <p>Contact no: +94768568550</p>
+                        <div className="social-links">
+                            <a href="mailto:ramsanujah@email.com" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                            <a href="https://github.com/" target="_blank" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>
+                        </div>
+                    </footer>
+                </React.Fragment>
+            );
+        };
+
+        const HeroSection = () => {
+            return (
+                <section id="about" className="page active">
+                    <div className="background-3d">
+                        {[...Array(6)].map((_, i) => <div key={i} className="shape"></div>)}
+                    </div>
+                    <motion.img 
+                        src="c:\\Users\\ramsa\\OneDrive\\Pictures\\WhatsApp Image2 2025-05-20 at 22.43.19_13779ce1.jpg" 
+                        alt="Sanuja Ramachandran" 
+                        className="profile-img"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                        whileHover={{ scale: 1.05, borderColor: "var(--secondary-color)" }}
+                    />
+                    <motion.h1
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        Sanuja Ramachandran
+                    </motion.h1>
+                    <motion.h2
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        Biomedical Technology Student
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                    >
+                        This website will be used to showcase my projects, skills, and achievements
+                        in the field of Biomedical Technology and Healthcare Innovation.
+                    </motion.p>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 }}
+                    >
+                        I am a passionate Biomedical Technology student with a keen interest in medical devices, bio-instrumentation, and healthcare IT. Currently, I am honing my skills in circuit design, biomaterials, and clinical engineering. My goal is to develop technologies that improve patient care and solve complex medical challenges.
+                    </motion.p>
+                    <motion.a 
+                        href="c:\\Users\\ramsa\\Downloads\\Sanuja-Ramachandran-FlowCV-Resume-20250520 (3).pdf" 
+                        className="btn" 
+                        download 
+                        style={{ marginTop: '2rem', display: 'inline-block' }}
+                        whileHover={{ scale: 1.05, y: -3, backgroundPosition: "right center" }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Download CV
+                    </motion.a>
+                    <div className="hero-icons">
+                        <i className="fas fa-heartbeat"></i>
+                        <i className="fas fa-microscope"></i>
+                        <i className="fas fa-dna"></i>
+                    </div>
+                </section>
+            );
+        };
+
+        const ExperienceSection = () => {
+            const experiences = [
+                { date: '2022 - Present', title: 'BS in Biomedical Technology', company: 'George Washington University', desc: 'Specializing in medical instrumentation, biomaterials, and clinical engineering. Dean\'s List 2023.' },
+                { date: 'Summer 2024', title: 'Biomedical Engineering Intern', company: 'MedTech Solutions Inc.', desc: 'Assisted in the testing and calibration of patient monitoring devices. Conducted failure analysis on circuit boards.' },
+                { date: '2023', title: 'Research Assistant', company: 'GWU Bio-Robotics Lab', desc: 'Contributed to the design of a soft-robotic actuator for rehabilitation gloves. Analyzed sensor data using MATLAB.' }
+            ];
+
+            return (
+                <section id="experience" className="page">
+                    <h3>Education & Experience</h3>
+                    <div className="timeline">
+                        {experiences.map((exp, index) => (
+                            <motion.div 
+                                className="timeline-item" 
+                                key={index}
+                                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                            >
+                                <div className="timeline-dot"></div>
+                                <motion.div 
+                                    className="timeline-content"
+                                    whileHover={{ y: -5, boxShadow: "0 15px 30px rgba(0,0,0,0.15)" }}
+                                >
+                                    <span className="timeline-date">{exp.date}</span>
+                                    <h4>{exp.title}</h4>
+                                    <p>{exp.company}</p>
+                                    <p>{exp.desc}</p>
+                                </motion.div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+            );
+        };
+
+        const SkillsSection = () => {
+            const techSkills = [
+                { name: 'Medical Instrumentation', width: '90%' },
+                { name: 'Biomaterials', width: '85%' },
+                { name: 'Clinical Engineering', width: '80%' }
+            ];
+
+            const softSkills = [
+                { name: 'Teamwork', icon: 'fa-users', width: '95%' },
+                { name: 'Problem Solving', icon: 'fa-lightbulb', width: '90%' },
+                { name: 'Communication', icon: 'fa-comments', width: '95%' },
+                { name: 'Time Management', icon: 'fa-clock', width: '85%' },
+                { name: 'Project Management', icon: 'fa-project-diagram', width: '80%' },
+                { name: 'Critical Thinking', icon: 'fa-brain', width: '90%' }
+            ];
+
+            const tools = [
+                { name: 'AutoCAD 2D', icon: 'fa-drafting-compass' },
+                { name: 'Solidworks', icon: 'fa-cube' },
+                { name: 'VS Code', icon: 'fa-code' },
+                { name: 'GitHub', icon: 'fa-github' },
+                { name: 'Microsoft Office', icon: 'fa-microsoft' },
+                { name: 'Adobe Photoshop', icon: 'fa-palette' },
+                { name: 'MATLAB', icon: 'fa-calculator' }
+            ];
+
+            const SkillBar = ({ name, width, icon }) => (
+                <div className="skill-bar">
+                    <div className="info">
+                        <p>{icon && <i className={`fas ${icon}`}></i>} {name}</p>
+                    </div>
+                    <div className="bar">
+                        <motion.span 
+                            initial={{ width: 0 }}
+                            whileInView={{ width: width }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.5, ease: "easeOut" }}
+                        ></motion.span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </section>
-    </main>
+            );
 
-    <footer>
-        <p>&copy; 2025 Sanuja Ramachandran</p>
-        <p>Email: <a href="mailto:ramsanujah@email.com">ramsanujah@email.com</a></p>
-        <p>Location: Batticaloa, Srilanka</p>
-        <p>Contact no: +94768568550</p>
-    </footer>
+            return (
+                <section id="skills" className="page">
+                    <h3>Technical Skills</h3>
+                    <div className="skills-container">
+                        {techSkills.map((skill, i) => <SkillBar key={i} {...skill} />)}
+                    </div>
+                    
+                    <h3>Soft Skills</h3>
+                    <div className="skills-container">
+                        {softSkills.map((skill, i) => <SkillBar key={i} {...skill} />)}
+                    </div>
 
-    <script src="main.js"></script>
-    <script src="scripts/main.js"></script>
+                    <h3>Tools & Software</h3>
+                    <ul className="skills-list">
+                        {tools.map((tool, index) => (
+                            <motion.li 
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                whileHover={{ y: -5, backgroundColor: "var(--primary-color)", color: "var(--text-light)" }}
+                            >
+                                <i className={`fas ${tool.icon}`}></i> {tool.name}
+                            </motion.li>
+                        ))}
+                    </ul>
+                </section>
+            );
+        };
+
+        const ProjectsSection = () => {
+            const projects = [
+                { title: 'Arduino Vital Sign Monitor', desc: 'Designed a portable patient monitoring system using Arduino to track heart rate and body temperature in real-time.', img: 'https://images.unsplash.com/photo-1553406830-ef2513450d76?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', icon: 'fa-github', linkText: 'View Code' },
+                { title: 'MRI Tumor Detection', desc: 'Developed a MATLAB algorithm using image segmentation and edge detection to identify brain tumors in MRI scans.', img: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', icon: 'fa-laptop-code', linkText: 'View Project' },
+                { title: '3D Prosthetic Arm Design', desc: 'Created a fully articulated prosthetic arm model in SolidWorks, optimized for additive manufacturing.', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', icon: 'fa-cube', linkText: 'View Design' },
+                { title: '3D Dental Implant Design', desc: 'Modeled a custom dental implant using CAD software, focusing on osseointegration surface textures and stress analysis.', img: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', icon: 'fa-tooth', linkText: 'View Model' },
+                { title: 'Hospital Management System', desc: 'Built a web-based application using PHP and MySQL to manage patient records and appointment scheduling.', img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', icon: 'fa-database', linkText: 'View System' },
+                { title: 'Personal Portfolio Website', desc: 'Designed and developed a responsive personal portfolio website to showcase biomedical projects and skills using HTML, CSS, and JavaScript.', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', icon: 'fa-globe', linkText: 'View Website' }
+            ];
+
+            return (
+                <section id="projects" className="page">
+                    <h3>Projects & Coding Portfolio</h3>
+                    <div className="projects-grid">
+                        {projects.map((project, index) => (
+                            <motion.div 
+                                className="project-card" 
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
+                            >
+                                <img src={project.img} alt={project.title} className="project-img" />
+                                <h4>{project.title}</h4>
+                                <p>{project.desc}</p>
+                                <span className="github-link"><i className={`fas ${project.icon}`}></i> {project.linkText}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+            );
+        };
+
+        const ArticlesSection = () => {
+            return (
+                <section id="articles" className="page">
+                    <h3>Featured Articles</h3>
+                    <motion.div 
+                        className="project-card"
+                        whileHover={{ y: -10 }}
+                    >
+                        <h4>Innovations in Prosthetics</h4>
+                        <p>Exploring the latest advancements in bionic limbs and neural interfaces.</p>
+                        <span className="github-link">Read Article</span>
+                    </motion.div>
+                    <motion.div 
+                        className="project-card"
+                        whileHover={{ y: -10 }}
+                    >
+                        <h4>AI in Medical Imaging</h4>
+                        <p>How machine learning is revolutionizing diagnostic accuracy in radiology.</p>
+                        <span className="github-link">Read Article</span>
+                    </motion.div>
+                </section>
+            );
+        };
+
+        const CTASection = () => {
+            return (
+                <section id="cta" className="page">
+                    <h2>Ready to collaborate?</h2>
+                    <p>I am available for internships, research projects, and new opportunities.</p>
+                    <div className="cta-buttons">
+                        <motion.a href="#contact" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Hire Me</motion.a>
+                        <motion.a href="c:\\Users\\ramsa\\Downloads\\Sanuja-Ramachandran-FlowCV-Resume-20250520 (3).pdf" className="btn" download whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Download Resume</motion.a>
+                    </div>
+                </section>
+            );
+        };
+
+        const ContactSection = () => {
+            return (
+                <section id="contact" className="page">
+                    <h3>Contact</h3>
+                    <div className="social-links">
+                        <a href="mailto:ramsanujah@email.com" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                        <a href="https://github.com/" target="_blank" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>
+                    </div>
+                    <form id="contact-form" className="contact-form">
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <motion.button type="submit" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Send Message</motion.button>
+                    </form>
+                </section>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
