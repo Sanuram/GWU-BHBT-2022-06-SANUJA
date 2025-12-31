@@ -1,15 +1,15 @@
 /* Medical & Biomedical Technology Portfolio Theme */
 :root {
-    --primary-color: #0077b6; /* Medical Blue */
-    --secondary-color: #2a9d8f; /* Surgical Green */
-    --accent-color: #00b4d8; /* Light Blue */
-    --bg-color: #f0f8ff; /* Alice Blue - Clean Background */
-    --text-color: #333333;
+    --primary-color: #1d3557; /* Deep Navy - Professional */
+    --secondary-color: #457b9d; /* Steel Blue - Medical */
+    --accent-color: #a8dadc; /* Soft Cyan - Clean */
+    --bg-color: #f1faee; /* Off-white Background */
+    --text-color: #1d3557;
     --text-light: #ffffff;
     --card-bg: #ffffff;
-    --nav-bg: rgba(255, 255, 255, 0.95);
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --nav-bg: rgba(255, 255, 255, 0.85);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Dark Mode Support */
@@ -108,21 +108,30 @@ nav {
 }
 
 .profile-img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid var(--secondary-color);
+    border: 4px solid var(--card-bg);
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
     z-index: 1;
+    transition: var(--transition);
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    border-color: var(--secondary-color);
 }
 
 h1 {
-    font-size: 3rem;
-    color: var(--primary-color);
+    font-size: 3.5rem;
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
     z-index: 1;
+    letter-spacing: -1px;
 }
 
 h2 {
@@ -155,8 +164,9 @@ h2 {
 .shape {
     position: absolute;
     border-radius: 50%;
-    background: var(--secondary-color);
-    opacity: 0.1;
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    opacity: 0.4;
+    filter: blur(60px);
     animation: float 20s infinite linear;
 }
 
@@ -181,6 +191,17 @@ h3 {
     font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 3rem;
+    position: relative;
+}
+
+h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--secondary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
 /* Skills */
@@ -210,8 +231,10 @@ h3 {
 .bar span {
     display: block;
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
     border-radius: 6px;
+    box-shadow: 0 0 10px rgba(69, 123, 157, 0.5);
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .skills-list {
@@ -242,18 +265,34 @@ h3 {
 }
 
 /* Projects & Articles */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
 .project-card {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
     box-shadow: var(--shadow);
     margin-bottom: 2rem;
-    border-left: 6px solid var(--secondary-color);
+    border-left: none;
+    border-top: 5px solid var(--secondary-color);
     transition: var(--transition);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 .project-card h4 {
@@ -273,7 +312,7 @@ h3 {
 /* CTA */
 #cta {
     text-align: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), #14213d);
     color: var(--text-light);
     border-radius: 20px;
     padding: 4rem 2rem;
@@ -293,8 +332,8 @@ h3 {
 
 .btn {
     padding: 1rem 2.5rem;
-    background: var(--text-light);
-    color: var(--primary-color);
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    color: var(--text-light);
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
@@ -306,7 +345,8 @@ h3 {
 
 .btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
 }
 
 /* Contact */
@@ -332,19 +372,21 @@ h3 {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 1rem;
-    border: 1px solid #ddd;
+    padding: 1.2rem;
+    border: 2px solid transparent;
     border-radius: 8px;
     font-family: inherit;
-    background: var(--bg-color);
+    background: #f8f9fa;
     color: var(--text-color);
+    transition: var(--transition);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+    border-color: var(--secondary-color);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(69, 123, 157, 0.1);
 }
 
 .social-links {
