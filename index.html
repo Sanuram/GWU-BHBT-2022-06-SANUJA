@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Sanuja Ramachandran - Biomedical Technology Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="img1.jpg" type="image/jpeg">
-    <meta property="og:image" content="img1.jpg">
+    <link rel="icon" href="https://i.imgur.com/LZCfXX7.jpg" type="image/jpeg">
+    <meta property="og:image" content="https://i.imgur.com/LZCfXX7.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     
@@ -240,7 +240,7 @@
                 <section id="home" className="page active">
                     <ParticleBackground />
                     <motion.img 
-                        src="img1.jpg" 
+                        src="https://i.imgur.com/LZCfXX7.jpg" 
                         alt="Sanuja Ramachandran" 
                         className="profile-img"
                         initial={{ scale: 0 }}
@@ -260,15 +260,25 @@
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                     >
-                        Biomedical Technology Student
+                        Biomedical Technology Undergraduate
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                     >
-                        I am a passionate Biomedical Technology student with a keen interest in medical devices, bio-instrumentation, and healthcare IT. Currently, I am honing my skills in circuit design, biomaterials, and clinical engineering. My goal is to develop technologies that improve patient care and solve complex medical challenges.
+                        I am a passionate Biomedical Technology undergraduate with a keen interest in medical devices, bio-instrumentation, and healthcare IT. Currently, I am honing my skills in circuit design, biomaterials, and clinical engineering. My goal is to develop technologies that improve patient care and solve complex medical challenges.
                     </motion.p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        style={{ marginBottom: '30px' }}
+                    >
+                        <a href="resume.pdf" download="Sanuja_Ramachandran_Resume.pdf" className="btn" style={{ textDecoration: 'none' }}>
+                            <i className="fas fa-download" style={{ marginRight: '8px' }}></i> Download Resume
+                        </a>
+                    </motion.div>
                     <div className="hero-icons">
                         {[
                             { icon: "fa-heartbeat", color: "#e63946" },
@@ -559,7 +569,6 @@
                     <p>I am available for internships, research projects, and new opportunities.</p>
                     <div className="cta-buttons">
                         <motion.a href="#contact" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Hire Me</motion.a>
-                        <motion.a href="resume.html" target="_blank" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>View Resume</motion.a>
                     </div>
                 </section>
             );
