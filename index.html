@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://i.imgur.com/LZCfXX7.jpg" type="image/jpeg">
-    <meta property="og:image" content="https://i.imgur.com/LZCfXX7.jpg">
+    <link rel="icon" href="./profile.jpg" type="image/jpeg">
+    <meta property="og:image" content="./profile.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     
@@ -237,10 +237,10 @@
 
         const HeroSection = () => {
             return (
-                <section id="home" className="page active">
+                <section id="home" className="page active" style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                     <ParticleBackground />
                     <motion.img 
-                        src="https://i.imgur.com/LZCfXX7.jpg" 
+                        src="./profile.jpg" 
                         alt="Sanuja Ramachandran" 
                         className="profile-img"
                         initial={{ scale: 0 }}
@@ -269,16 +269,6 @@
                     >
                         I am a passionate Biomedical Technology undergraduate with a keen interest in medical devices, bio-instrumentation, and healthcare IT. Currently, I am honing my skills in circuit design, biomaterials, and clinical engineering. My goal is to develop technologies that improve patient care and solve complex medical challenges.
                     </motion.p>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.8 }}
-                        style={{ marginBottom: '30px' }}
-                    >
-                        <a href="resume.pdf" download="Sanuja_Ramachandran_Resume.pdf" className="btn" style={{ textDecoration: 'none' }}>
-                            <i className="fas fa-download" style={{ marginRight: '8px' }}></i> Download Resume
-                        </a>
-                    </motion.div>
                     <div className="hero-icons">
                         {[
                             { icon: "fa-heartbeat", color: "#e63946" },
@@ -331,12 +321,25 @@
                             </p>
                         </motion.div>
                         <motion.div 
-                            style={{ flex: '1 1 300px' }}
+                            style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6 }}
                         >
-                            <div className="project-card" style={{ borderTop: '5px solid var(--primary-color)', padding: '2rem' }}>
+                            <img 
+                                src="./profile.jpg" 
+                                alt="Sanuja Ramachandran" 
+                                style={{ 
+                                    width: '250px', 
+                                    height: '250px', 
+                                    borderRadius: '20px', 
+                                    objectFit: 'cover', 
+                                    marginBottom: '2rem',
+                                    boxShadow: 'var(--shadow)',
+                                    border: '5px solid var(--card-bg)'
+                                }} 
+                            />
+                            <div className="project-card" style={{ borderTop: '5px solid var(--primary-color)', padding: '2rem', width: '100%' }}>
                                 <ul style={{ listStyle: 'none', padding: 0 }}>
                                     <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
                                         <i className="fas fa-user-graduate" style={{ width: '30px', color: 'var(--secondary-color)' }}></i>
