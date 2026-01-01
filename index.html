@@ -245,7 +245,7 @@
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                        whileHover={{ scale: 1.05, borderColor: "var(--secondary-color)" }}
+                        whileHover={{ scale: 1.05 }}
                     />
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
@@ -276,16 +276,6 @@
                     >
                         I am a passionate Biomedical Technology student with a keen interest in medical devices, bio-instrumentation, and healthcare IT. Currently, I am honing my skills in circuit design, biomaterials, and clinical engineering. My goal is to develop technologies that improve patient care and solve complex medical challenges.
                     </motion.p>
-                    <motion.a 
-                        href="./Sanuja-Ramachandran-FlowCV-Resume-20250520 (3) (1).pdf" 
-                        className="btn" 
-                        download 
-                        style={{ marginTop: '2rem', display: 'inline-block' }}
-                        whileHover={{ scale: 1.05, y: -3, backgroundPosition: "right center" }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Download CV
-                    </motion.a>
                     <div className="hero-icons">
                         {[
                             { icon: "fa-heartbeat", color: "#e63946" },
@@ -519,7 +509,7 @@
                     <p>I am available for internships, research projects, and new opportunities.</p>
                     <div className="cta-buttons">
                         <motion.a href="#contact" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Hire Me</motion.a>
-                        <motion.a href="./resume.pdf" className="btn" download whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Download Resume</motion.a>
+                        <motion.a href="resume.html" target="_blank" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>View Resume</motion.a>
                     </div>
                 </section>
             );

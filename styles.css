@@ -113,9 +113,14 @@ nav {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--card-bg);
-    box-shadow: var(--shadow);
+    box-shadow: 0 0 0 4px var(--secondary-color), var(--shadow);
     margin-bottom: 1.5rem;
     z-index: 1;
+    transition: var(--transition);
+}
+
+.profile-img:hover {
+    box-shadow: 0 0 0 8px var(--secondary-color), var(--shadow);
 }
 
 h1 {
