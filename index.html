@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="profile.jpg" type="image/jpeg">
-    <meta property="og:image" content="profile.jpg">
+    <link rel="icon" href="https://th.bing.com/th/id/R.0350b03b943792ab903d5784f72e165a?rik=snn4MpMRfubOxQ&riu=http%3a%2f%2fthispix.com%2fwp-content%2fuploads%2f2015%2f06%2fCopy-of-Edit-1798-1.jpg&ehk=23l8%2fpxrSUrkJ253xntAyozTzmtcMYBtQvc5KHnLk8s%3d&risl=&pid=ImgRaw&r=0" type="image/jpeg">
+    <meta property="og:image" content="https://th.bing.com/th/id/R.0350b03b943792ab903d5784f72e165a?rik=snn4MpMRfubOxQ&riu=http%3a%2f%2fthispix.com%2fwp-content%2fuploads%2f2015%2f06%2fCopy-of-Edit-1798-1.jpg&ehk=23l8%2fpxrSUrkJ253xntAyozTzmtcMYBtQvc5KHnLk8s%3d&risl=&pid=ImgRaw&r=0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     
@@ -37,6 +37,7 @@
 
             const navLinks = [
                 { name: 'Home', component: HeroSection, variant: 'fade' },
+                { name: 'About', component: AboutSection, variant: 'slide' },
                 { name: 'Experience', component: ExperienceSection, variant: 'slide' },
                 { name: 'Skills', component: SkillsSection, variant: 'scale' },
                 { name: 'Projects', component: ProjectsSection, variant: 'rotate' },
@@ -236,10 +237,10 @@
 
         const HeroSection = () => {
             return (
-                <section id="about" className="page active">
+                <section id="home" className="page active">
                     <ParticleBackground />
                     <motion.img 
-                        src="profile.jpg" 
+                        src="https://th.bing.com/th/id/R.0350b03b943792ab903d5784f72e165a?rik=snn4MpMRfubOxQ&riu=http%3a%2f%2fthispix.com%2fwp-content%2fuploads%2f2015%2f06%2fCopy-of-Edit-1798-1.jpg&ehk=23l8%2fpxrSUrkJ253xntAyozTzmtcMYBtQvc5KHnLk8s%3d&risl=&pid=ImgRaw&r=0" 
                         alt="Sanuja Ramachandran" 
                         className="profile-img"
                         initial={{ scale: 0 }}
@@ -297,6 +298,63 @@
                                 <i className={`fas ${item.icon}`} style={{ color: item.color, textShadow: "0 5px 15px rgba(0,0,0,0.2)" }}></i>
                             </motion.div>
                         ))}
+                    </div>
+                </section>
+            );
+        };
+
+        const AboutSection = () => {
+            return (
+                <section id="about" className="page">
+                    <h3>About Me</h3>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', alignItems: 'center', justifyContent: 'center' }}>
+                        <motion.div 
+                            style={{ flex: '1 1 400px', textAlign: 'justify' }}
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <p style={{ marginBottom: '1rem' }}>
+                                I am a dedicated <strong>Biomedical Technology Undergraduate</strong> with a passion for bridging the gap between engineering and medicine. 
+                                Currently studying at the Gampaha Wickramarachchi University of Indigenous Medicine, I specialize in 
+                                <strong> Medical Instrumentation</strong>, <strong>Biomaterials</strong>, and <strong>Clinical Engineering</strong>.
+                            </p>
+                            <p style={{ marginBottom: '1rem' }}>
+                                My goal is to innovate in the healthcare sector by developing affordable and efficient medical devices. 
+                                I have hands-on experience with circuit design, failure analysis, and software tools like MATLAB and SolidWorks.
+                            </p>
+                            <p>
+                                Based in <strong>Batticaloa, Sri Lanka</strong>, I am always looking for opportunities to collaborate on research projects 
+                                or internships that challenge me to learn and grow.
+                            </p>
+                        </motion.div>
+                        <motion.div 
+                            style={{ flex: '1 1 300px' }}
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <div className="project-card" style={{ borderTop: '5px solid var(--primary-color)', padding: '2rem' }}>
+                                <ul style={{ listStyle: 'none', padding: 0 }}>
+                                    <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
+                                        <i className="fas fa-user-graduate" style={{ width: '30px', color: 'var(--secondary-color)' }}></i>
+                                        <span><strong>Degree:</strong> BHSc(Hons) Biomedical Tech</span>
+                                    </li>
+                                    <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
+                                        <i className="fas fa-map-marker-alt" style={{ width: '30px', color: 'var(--secondary-color)' }}></i>
+                                        <span><strong>Location:</strong> Batticaloa, Sri Lanka</span>
+                                    </li>
+                                    <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
+                                        <i className="fas fa-envelope" style={{ width: '30px', color: 'var(--secondary-color)' }}></i>
+                                        <span><strong>Email:</strong> ramsanujah@email.com</span>
+                                    </li>
+                                    <li style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
+                                        <i className="fas fa-gamepad" style={{ width: '30px', color: 'var(--secondary-color)' }}></i>
+                                        <span><strong>Interests:</strong> Robotics, AI, Reading</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
             );
