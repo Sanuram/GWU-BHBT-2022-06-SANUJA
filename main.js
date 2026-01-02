@@ -239,123 +239,61 @@ const GradientBackground = () => {
 // --- Sections ---
 
 const HeroSection = () => {
-    const [text, setText] = useState('');
-    const fullText = "Biomedical Technology Student";
-
-    useEffect(() => {
-        let i = 0;
-        const interval = setInterval(() => {
-            setText(fullText.slice(0, i));
-            i++;
-            if (i > fullText.length + 1) clearInterval(interval);
-        }, 100);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
-        <section id="home" className="page active" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <section id="home" className="page active" style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
             <ParticleBackground />
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+            <motion.img 
+                src="./profile.jpg" 
+                alt="Sanuja Ramachandran" 
+                className="profile-img"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                whileHover={{ scale: 1.05 }}
+            />
+            <motion.h1
+                initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    backdropFilter: 'blur(10px)',
-                    padding: '3rem',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    textAlign: 'center',
-                    maxWidth: '800px',
-                    width: '90%',
-                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-                    zIndex: 1
-                }}
+                transition={{ delay: 0.2 }}
             >
-                <motion.div style={{ position: 'relative', display: 'inline-block', marginBottom: '1.5rem' }}>
+                Sanuja Ramachandran
+            </motion.h1>
+            <motion.h2
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+            >
+                Biomedical Technology Undergraduate
+            </motion.h2>
+            <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+            >
+                I am a passionate Biomedical Technology undergraduate with a keen interest in medical devices, bio-instrumentation, and healthcare IT. Currently, I am honing my skills in circuit design, biomaterials, and clinical engineering. My goal is to develop technologies that improve patient care and solve complex medical challenges.
+            </motion.p>
+            <div className="hero-icons">
+                {[
+                    { icon: "fa-heartbeat", color: "#e63946" },
+                    { icon: "fa-microscope", color: "#457b9d" },
+                    { icon: "fa-dna", color: "#2a9d8f" }
+                ].map((item, index) => (
                     <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                        style={{
-                            position: 'absolute',
-                            top: '-8px', left: '-8px', right: '-8px', bottom: '-8px',
-                            borderRadius: '50%',
-                            borderTop: '3px solid var(--secondary-color)',
-                            borderRight: '3px solid transparent',
-                            borderBottom: '3px solid var(--secondary-color)',
-                            borderLeft: '3px solid transparent',
+                        key={index}
+                        style={{ display: 'inline-block', perspective: 1000 }}
+                        animate={{ 
+                            rotateY: [0, 360],
+                            y: [0, -10, 0]
                         }}
-                    />
-                    <img 
-                        src="./profile.jpg" 
-                        alt="Sanuja Ramachandran" 
-                        className="profile-img"
-                        style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', border: '3px solid rgba(255,255,255,0.2)' }}
-                    />
-                </motion.div>
-
-                <motion.h1
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}
-                >
-                    Sanuja Ramachandran
-                </motion.h1>
-                
-                <h2 style={{ fontSize: '1.2rem', color: 'var(--secondary-color)', marginBottom: '1.5rem', minHeight: '1.5em' }}>
-                    {text}<span style={{ opacity: 0.7 }}>|</span>
-                </h2>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    style={{ marginBottom: '2rem', fontSize: '1rem', lineHeight: '1.6' }}
-                >
-                    I am a passionate Biomedical Technology student with a keen interest in medical devices, bio-instrumentation, and healthcare IT. 
-                    My goal is to develop technologies that improve patient care and solve complex medical challenges.
-                </motion.p>
-
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '2rem' }}>
-                    <motion.a 
-                        href="./resume.pdf" 
-                        className="btn" 
-                        download 
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        transition={{ 
+                            rotateY: { duration: 5, repeat: Infinity, ease: "linear", delay: index * 1 },
+                            y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                        }}
                     >
-                        Download CV
-                    </motion.a>
-                    <motion.a 
-                        href="#contact" 
-                        className="btn"
-                        style={{ background: 'transparent', border: '2px solid var(--primary-color)' }}
-                        whileHover={{ scale: 1.05, background: 'var(--primary-color)', color: '#fff' }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Contact Me
-                    </motion.a>
-                </div>
-
-                <div className="hero-icons" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-                    {[
-                        { icon: "fa-linkedin", link: "https://linkedin.com" },
-                        { icon: "fa-github", link: "https://github.com" },
-                        { icon: "fa-envelope", link: "mailto:ramsanujah@email.com" }
-                    ].map((item, index) => (
-                        <motion.a
-                            key={index}
-                            href={item.link}
-                            target="_blank"
-                            whileHover={{ y: -5, color: 'var(--secondary-color)' }}
-                            style={{ fontSize: '1.5rem', color: 'inherit' }}
-                        >
-                            <i className={`fab ${item.icon} fas`}></i>
-                        </motion.a>
-                    ))}
-                </div>
-            </motion.div>
+                        <i className={`fas ${item.icon}`} style={{ color: item.color, textShadow: "0 5px 15px rgba(0,0,0,0.2)" }}></i>
+                    </motion.div>
+                ))}
+            </div>
         </section>
     );
 };
